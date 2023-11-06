@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- Aplicando o modo claro no site -->
+<html lang="pt-br" class="">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevLinks</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="profile">
+
+            <!-- alt adiciona um texto alternativo caso a imgaem não esteja disponível -->
+            <img src="./assets/my_avatar.png" alt="Avatar do usuário">
+            <p>
+                @jean
+            </p>
+
+        </div>
+
+        <div id="switch" onclick="toogleMode()">
+            <button></button>
+            <span></span>
+        </div>
+
+        <div>
+            <ul>
+                <li>
+                    <a href="#">Alguma coisa</a>
+                </li>
+                <li>
+                    <a href="#">Baixar alguma coisa</a>
+                </li>
+                <li>
+                    <!-- o atributo target com valor blank faz com uma nova janela seja aberta que o usuário não saia da minha página -->
+                    <a href="#" target="_blank">Veja meu portifólio</a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">perfil no Linkedin</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="social-links">
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+                <ion-icon name="logo-github"></ion-icon>
+            </a>
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+                <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+        </div>
+
+        <footer>
+            <p>Feito com &#10084 pelo Galudinho Jeanzão</p>
+        </footer>
+
+    </div>
+
+    <!-- adicionando script para utilizar icones -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+/*reset básico de CSS*/
+
+/* Existe um site onde é possível descobrir alguns truques de CSS. O link é esse https://css-tricks.com/ */
+:root {
+    --black: #111;
+    --text-color: #FFF;
+    --bg-url: url(./assets/bg-mobile.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --serface-color-hover: rgba(255, 255, 255, 0.05);
+    --highlight-color: rgba(rgba(255, 255, 255, 0.05));
+    --switch-bg-url:  url(./assets/moon-stars.svg);
+}
+
+/* Adiconando um modo claro no site */
+.light-mode {
+    --text-color: #000;
+    --bg-url: url(./assets/bg-mobile-light.jpg);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --serface-color-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(0, 0, 0, 0.1);
+    --switch-bg-url:  url(./assets/sun.svg);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* A linha abaixo faz com que a não seja estourado as medidas que podem ser aplicadas posteriormente. Se for definida o tamanho de uma div, por exemplo, ao aplicar um padding os espaços irão respeitar o tamanho estabelecido. */
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+}
+
+html {
+    /*Ajustando o tamanho dos textos para rem*/
+    font-size: 62.5%;
+    /*scroll mais suave*/
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg-url) no-repeat top center/cover;
+
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+body * {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+#container {
+    width: 360px;
+
+    margin: 0 auto;
+    margin-top: 56px;
+    padding: 0 2.4rem;
+}
+
+/* uma forma diferente de alinhar tags que estão em elementos do tipo block é utilizar o text-align */
+#profile {
+    text-align: center;
+    padding: 24px;
+}
+
+#profile img {
+    height: 112px;
+    width: 112px;
+
+
+    border-radius: 50%;
+    border: 2px solid #fff
+}
+
+#profile p {
+    font-weight: 500;
+    /* tag relacionada ao espaçamento de linhas */
+    line-height: 2.4rem;
+    margin-top: .8rem;
+}
+
+/* switch */
+#switch {
+    /* O posicionamento do botão vai ser referente ao tamanho da div que ele é filho no caso a switch por isso ela recebe o position relative */
+    position: relative;
+    width: 6.4rem;
+
+    margin: 4px auto;
+}
+
+#switch button{
+    width: 3.2rem;
+    height: 3.2rem;
+    background: #fff var(--switch-bg-url) no-repeat center;
+    border: none;
+    border-radius: 50%;
+
+
+    /* Essa estrategia alinha o botão ao centro da div */
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.light-mode #switch button {
+    right: 0;
+    left: initial;
+
+}
+
+#switch span {
+    /* por ser um tag inline o display do span deve ter o display block para conseguir aceitar um tamanho e altura fixa */
+    display: block;
+    width: 6.4rem;
+    height: 2.4rem;
+
+    background: var(--serface-color-hover);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(.4rem);
+    -webkit-backdrop-filter: blur(.4rem);
+    border-radius: 9999px;
+
+    transition: 2s linear;
+    cursor: pointer;
+}
+
+/* configurando a lista de links */
+ul {
+    /* removendo o stylo padrão da lista, no caso os pontinhos que ficam na esquerda */
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 2.4rem 0;
+}
+
+/* li são elemntos em bloco */
+ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1.6rem 2.4rem;
+
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: .8rem;
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    font-weight: 500;
+    transition: .2s linear;
+}
+
+ul li a:hover {
+    background: var(--serface-color-hover);
+    border: 1.5px solid var(--text-color);
+}
+
+/* Links das redes sociais */
+#social-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    padding: 24px 0;
+    font-size: 24px;
+}
+
+#social-links a {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    border-radius: 50%;
+}
+
+#social-links a:hover {
+    background: var(--highlight-color);
+    transition: .3s linear;
+}
+
+/* rodapé */
+footer {
+    padding: 2.4rem 0;
+    text-align: center;
+}
