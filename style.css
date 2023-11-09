@@ -9,43 +9,50 @@
     --surface-color: rgba(255, 255, 255, 0.05);
     --surface-color-hover: rgba(255, 255, 255, 0.02);
     --highlight-color: rgba(255, 255, 255, 0.2);
-    --switch-bg-url: url(./assets/moon-stars.svg);
+    --switch-bg-url: url(./assets/moon-stars.svg);   
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  /* A linha abaixo faz com que a não seja estourado as medidas que podem ser aplicadas posteriormente. Se for definida o tamanho de uma div, por exemplo, ao aplicar um padding os espaços irão respeitar o tamanho estabelecido. */
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+}
+
+html {
+  /*Ajustando o tamanho dos textos para rem*/
+  font-size: 62.5%;
+  /*scroll mais suave*/
+  scroll-behavior: smooth;
+}
+
+body {
+  /* background: var(--bg-url) no-repeat top center/cover; */
+  /* background: var(--bg-color-gradient); */
+  height: 100vh;
+  
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-decoration: none;
+
+  -webkit-animation: color-change-3x 10s linear infinite alternate both;
+	        animation: color-change-3x 10s linear infinite alternate both;
 }
 
 /* Adiconando um modo claro no site */
-.light-mode {
+.bg-light {
     --text-color: #000;
-    --bg-url: url(./assets/bg-mobile-light.jpg);
+    /* --bg-url: url(./assets/bg-mobile-light.jpg); */
     --stroke-color: rgba(0, 0, 0, 0.5);
     --surface-color: rgba(0, 0, 0, 0.05);
     --surface-color-hover: rgba(0, 0, 0, 0.02);
     --highlight-color: rgba(0, 0, 0, 0.1);
     --switch-bg-url: url(./assets/sun.svg);
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    /* A linha abaixo faz com que a não seja estourado as medidas que podem ser aplicadas posteriormente. Se for definida o tamanho de uma div, por exemplo, ao aplicar um padding os espaços irão respeitar o tamanho estabelecido. */
-    box-sizing: border-box;
-    outline: none;
-    text-decoration: none;
-}
-
-html {
-    /*Ajustando o tamanho dos textos para rem*/
-    font-size: 62.5%;
-    /*scroll mais suave*/
-    scroll-behavior: smooth;
-}
-
-body {
-    background: var(--bg-url) no-repeat top center/cover;
-    height: 100vh;
-
-    font-size: 1.6rem;
-    line-height: 1.5;
-    text-decoration: none;
+    -webkit-animation: color-change-3x-light 10s linear infinite alternate both;
+	        animation: color-change-3x-light 10s linear infinite alternate both;
 }
 
 body * {
@@ -62,7 +69,7 @@ body * {
     padding: 0 2.4rem;
 }
 
-/* uma forma diferente de alinhar tags que estão em elementos do tipo block é utilizar o text-align */
+/* uma forma diferente de alinhar tags em elementos do tipo block é utilizar o text-align */
 #profile {
     text-align: center;
     padding: 24px;
@@ -78,10 +85,16 @@ body * {
 }
 
 #profile p {
+    font-size: 2.2rem;
     font-weight: 500;
+
     /* tag relacionada ao espaçamento de linhas */
     line-height: 2.4rem;
     margin-top: .8rem;
+
+    /* animação de texto */
+    -webkit-animation: focus-in-contract-bck 8s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate-reverse backwards;
+	        animation: focus-in-contract-bck 8s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate-reverse backwards;
 }
 
 /* switch */
@@ -112,11 +125,16 @@ body * {
     animation: slide-back 0.2s;
 }
 
-.light-mode #switch button {
+#switch button:hover {
+    outline: .8rem solid var(--highlight-color);
+}
+
+.bg-light #switch button {
     animation: slide-in .4s forwards;
 }
 
-.light-mode button:hover {
+
+.bg-light  button:hover {
     outline: .8rem solid var(--highlight-color);
 }
 
@@ -138,7 +156,7 @@ body * {
 
 /* configurando a lista de links */
 ul {
-    /* removendo o stylo padrão da lista, no caso os pontinhos que ficam na esquerda */
+    /* removendo o stilo padrão da lista, no caso, os bullets que ficam na esquerda */
     list-style: none;
 
     display: flex;
@@ -169,6 +187,10 @@ ul li a {
 ul li a:hover {
     background: var(--surface-color-hover);
     border: 1.5px solid var(--text-color);
+
+    /* adicionando animações aos links */
+    -webkit-animation: shake-horizontal 1.2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	animation: shake-horizontal 1.2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
 
 /* Links das redes sociais */
@@ -191,6 +213,9 @@ ul li a:hover {
 #social-links a:hover {
     background: var(--highlight-color);
     transition: .3s linear;
+
+    -webkit-animation: rotate-vert-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	        animation: rotate-vert-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
 
 /* rodapé */
@@ -228,3 +253,170 @@ footer {
         left: 0;
     }
 }
+
+/* animação para sacudir botões */
+@-webkit-keyframes shake-horizontal {
+    0%,
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+      -webkit-transform: translateX(-10px);
+              transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: translateX(10px);
+              transform: translateX(10px);
+    }
+    80% {
+      -webkit-transform: translateX(8px);
+              transform: translateX(8px);
+    }
+    90% {
+      -webkit-transform: translateX(-8px);
+              transform: translateX(-8px);
+    }
+  }
+  @keyframes shake-horizontal {
+    0%,
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+      -webkit-transform: translateX(-10px);
+              transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: translateX(10px);
+              transform: translateX(10px);
+    }
+    80% {
+      -webkit-transform: translateX(8px);
+              transform: translateX(8px);
+    }
+    90% {
+      -webkit-transform: translateX(-8px);
+              transform: translateX(-8px);
+    }
+  }
+
+  /* Animação de texto */
+  @-webkit-keyframes focus-in-contract-bck {
+    0% {
+      letter-spacing: 1em;
+      -webkit-transform: translateZ(300px);
+              transform: translateZ(300px);
+      -webkit-filter: blur(12px);
+              filter: blur(12px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(12px);
+              transform: translateZ(12px);
+      -webkit-filter: blur(0);
+              filter: blur(0);
+      opacity: 1;
+    }
+  }
+  @keyframes focus-in-contract-bck {
+    0% {
+      letter-spacing: 1em;
+      -webkit-transform: translateZ(300px);
+              transform: translateZ(300px);
+      -webkit-filter: blur(12px);
+              filter: blur(12px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(12px);
+              transform: translateZ(12px);
+      -webkit-filter: blur(0);
+              filter: blur(0);
+      opacity: 1;
+    }
+  }
+  
+
+  /* animação dos links das redes sociais */
+  @-webkit-keyframes rotate-vert-center {
+    0% {
+      -webkit-transform: rotateY(0);
+              transform: rotateY(0);
+    }
+    100% {
+      -webkit-transform: rotateY(360deg);
+              transform: rotateY(360deg);
+    }
+  }
+  @keyframes rotate-vert-center {
+    0% {
+      -webkit-transform: rotateY(0);
+              transform: rotateY(0);
+    }
+    100% {
+      -webkit-transform: rotateY(360deg);
+              transform: rotateY(360deg);
+    }
+  }
+
+  /* animações para background */
+@-webkit-keyframes color-change-3x {
+  0% {
+    background: #023544;
+  }
+  50% {
+    background: #021441;
+  }
+  100% {
+    background: #19012b;
+  }
+}
+@keyframes color-change-3x {
+  0% {
+    background: #023544;
+  }
+  50% {
+    background: #021441;
+  }
+  100% {
+    background: #19012b;
+  }
+}
+
+/* animações bg-light*/
+@-webkit-keyframes color-change-3x-light {
+  0% {
+    background: #cddfe6;
+  }
+  50% {
+    background: #afbee2;
+  }
+  100% {
+    background: #d3acec;
+  }
+}
+@keyframes color-change-3x-light {
+  0% {
+    background: #cddfe6;
+  }
+  50% {
+    background: #afbee2;
+  }
+  100% {
+    background: #d3acec;
+  }
+}
+
+  
