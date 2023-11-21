@@ -156,7 +156,7 @@ body * {
 
 /* configurando a lista de links */
 ul {
-    /* removendo o stilo padrão da lista, no caso, os bullets que ficam na esquerda */
+    /* removendo o estilo padrão da lista, no caso, os bullets que ficam na esquerda */
     list-style: none;
 
     display: flex;
@@ -166,7 +166,7 @@ ul {
     padding: 2.4rem 0;
 }
 
-/* li são elemntos em bloco */
+/* li são elementos em bloco */
 ul li a {
     display: flex;
     justify-content: center;
@@ -235,7 +235,7 @@ footer {
     }
 }
 
-/* animações  */
+/*** animações ***/
 @keyframes slide-in {
     from {
         left: 0;
